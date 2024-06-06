@@ -1,0 +1,264 @@
+{
+  "students": [
+    {
+      "username": "mohamed",
+      "email": "mohamed@mohamed.com",
+      "password": "123",
+      "subjects": [
+        {
+          "name": "math",
+          "id": "2",
+          "degree": 1
+        },
+        {
+          "name": "german",
+          "id": "3",
+          "degree": 0
+        },
+        {
+          "name": "حساب",
+          "id": "1",
+          "degree": 1
+        },
+        {
+          "name": "JavaScript",
+          "id": "d981",
+          "degree": 1
+        }
+      ],
+      "id": "1"
+    },
+    {
+      "username": "ahmed",
+      "email": "ahmed@ahmed.com",
+      "password": "123",
+      "subjects": [
+        {
+          "name": "math",
+          "id": "2",
+          "degree": 2
+        }
+      ],
+      "id": "9"
+    },
+    {
+      "username": "sayed",
+      "email": "sayed@sayed.com",
+      "password": "123",
+      "id": "6"
+    },
+    {
+      "username": "ali",
+      "email": "ali@ali.com",
+      "password": "123",
+      "id": "10"
+    },
+    {
+      "username": "mano",
+      "email": "mano@mano.com",
+      "password": "123",
+      "subjects": [
+        {
+          "name": "german",
+          "id": "3",
+          "degree": 1
+        }
+      ],
+      "id": "11"
+    }
+  ],
+  "doctor": [
+    {
+      "username": "admin",
+      "email": "admin@admin.com",
+      "password": "123",
+      "id": "1"
+    }
+  ],
+  "subjects": [
+    {
+      "name": "math",
+      "questions": [
+        {
+          "question": "2+2",
+          "answer1": "4",
+          "answer2": "5",
+          "answer3": "2",
+          "answer4": "8",
+          "correctAnswer": "4"
+        },
+        {
+          "question": "2+3",
+          "answer1": "4",
+          "answer2": "5",
+          "answer3": "2",
+          "answer4": "8",
+          "correctAnswer": "5"
+        }
+      ],
+      "id": "2"
+    },
+    {
+      "name": "Bio",
+      "questions": [],
+      "id": "4"
+    },
+    {
+      "name": "regt",
+      "questions": [],
+      "id": "5"
+    },
+    {
+      "name": "gg",
+      "questions": [
+        {
+          "question": "gdfgd",
+          "answer1": "gdd",
+          "answer2": "dg",
+          "answer3": "dg",
+          "answer4": "dg",
+          "correctAnswer": "dg"
+        }
+      ],
+      "id": "6"
+    },
+    {
+      "name": "dasf",
+      "questions": [
+        {
+          "question": "faf",
+          "answer1": "sdf",
+          "answer2": "a",
+          "answer3": "ff",
+          "answer4": "ff",
+          "correctAnswer": "ff"
+        }
+      ],
+      "id": "7"
+    },
+    {
+      "name": "ew",
+      "questions": [
+        {
+          "question": "sfa",
+          "answer1": "af",
+          "answer2": "fa",
+          "answer3": "afs",
+          "answer4": "asf",
+          "correctAnswer": "afs"
+        }
+      ],
+      "id": "8"
+    },
+    {
+      "name": "ggdg",
+      "questions": [
+        {
+          "question": "gdfbd",
+          "answer1": "ag",
+          "answer2": "d",
+          "answer3": "hff",
+          "answer4": "fgd",
+          "correctAnswer": "hff"
+        }
+      ],
+      "id": "9"
+    },
+    {
+      "name": "gg",
+      "questions": [
+        {
+          "question": "dfg",
+          "answer1": "df",
+          "answer2": "gdf",
+          "answer3": "g",
+          "answer4": "dd",
+          "correctAnswer": "df"
+        }
+      ],
+      "id": "10"
+    },
+    {
+      "name": "dasd",
+      "questions": [
+        {
+          "question": "dasav",
+          "answer1": "asd",
+          "answer2": "as",
+          "answer3": "sdvvsd",
+          "answer4": "A",
+          "correctAnswer": "A"
+        }
+      ],
+      "id": "13"
+    },
+    {
+      "name": "fds",
+      "questions": [
+        {
+          "question": "ssdfgs",
+          "answer1": "f",
+          "answer2": "afsd",
+          "answer3": "sfd",
+          "answer4": "sdf",
+          "correctAnswer": "afsd"
+        }
+      ],
+      "id": "14"
+    },
+    {
+      "name": "ad",
+      "questions": [
+        {
+          "question": "fasf",
+          "answer1": "sfs",
+          "answer2": "dsdsfa",
+          "answer3": "afs",
+          "answer4": "dasf",
+          "correctAnswer": "dasf"
+        }
+      ],
+      "id": "15"
+    },
+    {
+      "name": "ffsd",
+      "questions": [
+        {
+          "question": "asff",
+          "answer1": "afaf",
+          "answer2": "asfa",
+          "answer3": "afa",
+          "answer4": "fasf",
+          "correctAnswer": "afaf"
+        }
+      ],
+      "id": "16"
+    },
+    {
+      "name": "dasd",
+      "questions": [],
+      "id": "17"
+    },
+    {
+      "id": "d981",
+      "name": "JavaScript",
+      "questions": [
+        {
+          "question": "how to read data in the console?",
+          "answer1": "Console.log",
+          "answer2": "print",
+          "answer3": "system.out.print",
+          "answer4": "read",
+          "correctAnswer": "Console.log"
+        }
+      ]
+    }
+  ],
+  "login": [
+    {
+      "username": "mohamed",
+      "role": "students",
+      "id": "1"
+    }
+  ]
+}

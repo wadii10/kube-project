@@ -1,0 +1,20 @@
+version: '3.5'
+
+services:
+  front:
+    build: ./mcq-lab
+    container_name: mcq-app
+    ports:
+      - '4200:4200'
+    volumes:
+      - ./:/angular-app
+    environment:
+      - STYLE=css
+  
+  back:
+    build: ./backend
+    container_name: back-server
+    ports:
+      - "3000:3000"
+    hostname: nodeapp
+    command: npm start
