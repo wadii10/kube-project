@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: frontend-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: frontend
@@ -13,5 +13,7 @@ spec:
         app: frontend
     spec:
       containers:
-      - name: frontend
-        image: wadii10/mcq-front:latest
+        - name: frontend
+          image: wadii10/mcq-front:latest
+          ports:
+            - containerPort: 4200
