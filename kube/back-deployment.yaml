@@ -1,19 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-deployment
+  name: back
+  labels:
+    app: back
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: backend
+      app: back
   template:
     metadata:
       labels:
-        app: backend
+        app: back
     spec:
       containers:
-      - name: backend
-        image: wadii10/mcq-back:latest
-        ports:
-        - containerPort: 3000
+        - name: back
+          image: wadii10/mcq-back:latest
+          args: ["npm", "start"]
+          ports:
+            - containerPort: 3000
+      #hostname: backend-service
+      #restartPolicy: Always

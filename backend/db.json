@@ -256,8 +256,8 @@
   ],
   "login": [
     {
-      "username": "mohamed",
-      "role": "students",
+      "username": "admin",
+      "role": "doctor",
       "id": "1"
     }
   ]

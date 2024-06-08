@@ -1,9 +1,8 @@
 const express = require("express");
+const jsonServer = require("json-server");
 const cors = require("cors");
 
 const app = express();
-
-const jsonServer = require("json-server");
 
 const corsOptions = {
   origin: true,
@@ -13,11 +12,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// ...
-
-// You may want to mount JSON Server on a specific end-point, for example /api
-// Optiona,l except if you want to have JSON Server defaults
-// server.use('/api', jsonServer.defaults());
-app.use("/api", jsonServer.router("db.json"));
+app.use(jsonServer.router("db.json"));
 
 app.listen(3000);

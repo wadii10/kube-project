@@ -1,19 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend-deployment
+  labels:
+    app: front
+  name: front
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: frontend
+      app: front
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
-        app: frontend
+        app: front
     spec:
       containers:
-        - name: frontend
+        - name: front
           image: wadii10/mcq-front:latest
           ports:
             - containerPort: 4200
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /angular-app
+              name: front-cm0
+      restartPolicy: Always
+      volumes:
+        - configMap:
+            name: front-cm0
+          name: front-cm0

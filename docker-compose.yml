@@ -3,7 +3,7 @@ version: '3.5'
 services:
   front:
     build: ./mcq-lab
-    container_name: mcq-app
+    container_name: wadii10/mcq-front:latest
     ports:
       - '4200:4200'
     volumes:
@@ -13,8 +13,8 @@ services:
   
   back:
     build: ./backend
-    container_name: back-server
+    container_name: wadii10/mcq-back:latest
     ports:
       - "3000:3000"
-    hostname: nodeapp
+    hostname: back
     command: npm start
