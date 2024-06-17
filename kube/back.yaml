@@ -2,13 +2,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: back
-  labels:
-    app: back
+  namespace: app-space 
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: back
+  replicas: 1
   template:
     metadata:
       labels:
@@ -19,6 +18,22 @@ spec:
           image: wadii10/mcq-back:latest
           args: ["npm", "start"]
           ports:
-            - containerPort: 3000
+            - name: back
+              containerPort: 3000
       #hostname: backend-service
       #restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: back
+  namespace: app-space
+spec:
+  selector:
+    app: back
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      nodePort: 31081
+  type: LoadBalancer

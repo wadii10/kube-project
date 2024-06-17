@@ -1,0 +1,18 @@
+---
+- name: Deploy Kubernetes resources
+  hosts: localhost
+  tasks:
+    - name: Apply create-namespace.yaml
+      kubernetes.core.k8s:
+        state: present
+        definition: "{{ lookup('file', 'kube/create-namespace.yaml') }}"
+
+    - name: Apply back.yaml
+      kubernetes.core.k8s:
+        state: present
+        definition: "{{ lookup('file', 'kube/back.yaml') }}"
+    
+    - name: Apply front.yaml
+      kubernetes.core.k8s:
+        state: present
+        definition: "{{ lookup('file', 'kube/front.yaml') }}"

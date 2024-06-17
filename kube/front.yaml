@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front
+  namespace: app-space 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: front
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: front
+    spec:
+      containers:
+        - name: front
+          image: wadii10/mcq-front:latest
+          ports:
+            - containerPort: 5000
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /angular-app
+              name: front-cm0
+      restartPolicy: Always
+      volumes:
+        - configMap:
+            name: front-cm0
+          name: front-cm0
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: front
+  namespace: app-space 
+spec:
+  selector:
+    app: front
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+      nodePort: 31080
+  type: LoadBalancer
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fe-ingress
+  namespace: app-space
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: angular-app
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: front
+                port:
+                  number: 5000
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: front-cm0
+  namespace: app-space
+  labels:
+    app: front
+data:
+  docker-compose.yml: "version: '3.5'\n\nservices:\n  front:\n    build: ./mcq-lab\n    container_name: wadii10/mcq-front:latest\n    ports:\n      - '5000:5000'\n    volumes:\n      - ./:/angular-app\n    environment:\n      - STYLE=css\n  \n  back:\n    build: ./backend\n    container_name: wadii10/mcq-back:latest\n    ports:\n      - \"3000:3000\"\n    hostname: back\n    command: npm start"

@@ -30,8 +30,7 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 # Copy the built Angular application from the build stage
 COPY --from=build /app/dist/mcq-lab /usr/share/nginx/html
 
-# Expose port 4200
-EXPOSE 4200
+EXPOSE 5000
 
 # Start Nginx server
 CMD ["nginx", "-g", "daemon off;"]
