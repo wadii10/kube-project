@@ -43,7 +43,7 @@ spec:
       port: 5000
       targetPort: 5000
       nodePort: 31080
-  type: LoadBalancer
+  type: NodePort
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
