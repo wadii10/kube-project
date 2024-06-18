@@ -5,7 +5,16 @@ FROM node:18.17.1 AS build
 WORKDIR /app
 
 # Copy the package.json and package-lock.json files
-COPY package*.json ./
+COPY package.json ./
+
+# Increase npm timeout
+RUN npm config set fetch-retry-maxtimeout 120000
+
+# Disable npm progress
+RUN npm set progress=false
+
+# Clean npm cache
+RUN npm cache clean --force
 
 # Install dependencies
 RUN npm install
