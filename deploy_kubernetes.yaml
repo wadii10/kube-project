@@ -1,6 +1,10 @@
 ---
 - name: Deploy Kubernetes resources
   hosts: localhost
+  collections:
+    - kubernetes.core
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
   tasks:
     - name: Apply create-namespace.yaml
       kubernetes.core.k8s:
