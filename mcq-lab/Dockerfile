@@ -10,9 +10,7 @@ COPY package.json ./
 # Increase npm timeout
 RUN npm config set fetch-retry-maxtimeout 120000
 
-# Disable npm progress
-RUN npm set progress=false
-
+RUN npm config set registry https://registry.npmjs.org/
 # Clean npm cache
 RUN npm cache clean --force
 
