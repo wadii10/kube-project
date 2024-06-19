@@ -1,10 +1,22 @@
-all:  # This group can be renamed if needed
+# Define a group for your local tasks (optional)
+local:
   hosts:
-    localhost:  # You can keep this for local tasks
+    localhost:
       ansible_connection: local
-      ansible_python_interpreter: /path/to/your/python3  # Update with your actual path
-    k8s_api_server:  # Define a new host for the API server
-      ansible_host: 192.168.59.111  # Update with your Minikube IP address
-      ansible_connection: ssh  # Connection type for the API server (might vary)
 
+# Define a group for your Kubernetes cluster (rename if needed)
+k8s_cluster:
+  hosts:
+    k8s-master:  # Replace with your actual master node name
+      ansible_host: 192.168.59.113  # Replace with your Minikube API server IP (use `minikube ip`)
+      ansible_connection: ssh  # Adjust connection type if needed (check your Kubernetes setup documentation)
+      kubernetes_api_server_host: 192.168.59.113  # Explicit API server address (optional)
 
+# Optional: Additional groups for worker nodes or other cluster components
+# (uncomment and modify as needed)
+# worker_nodes:
+#   hosts:
+#     worker1:
+#       ansible_host: 10.0.0.2
+#     worker2:
+#       ansible_host: 10.0.0.3
