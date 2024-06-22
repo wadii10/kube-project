@@ -16,6 +16,7 @@ spec:
       containers:
         - name: back
           image: wadii10/mcq-back:latest
+          imagePullPolicy: Always
           args: ["npm", "start"]
           ports:
             - name: back

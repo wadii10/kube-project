@@ -18,6 +18,7 @@ spec:
       containers:
         - name: front
           image: wadii10/mcq-front:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 5000
               protocol: TCP

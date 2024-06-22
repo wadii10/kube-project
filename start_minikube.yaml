@@ -1,7 +1,24 @@
-- hosts: localhost  
+---
+- name: Deploy Kubernetes resources
+  hosts: all
+  become: true
+  collections:
+    - kubernetes.core
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
   tasks:
-    - name: Start minikube
-      command: minikube start
-      register: minikube_start_result
-    - debug:
-        msg: "minikube started successfully: {{ minikube_start_result.rc == 0 }}"
+    - name: Apply create-namespace.yaml
+      kubernetes.core.k8s:
+        state: present
+        definition: "{{ lookup('file', 'kube/create-namespace.yaml') }}"
+
+    - name: Apply -f back.yaml
+      kubernetes.core.k8s:
+        state: present
+        definition: "{{ lookup('file', 'kube/back.yaml') }}"
+
+    
+    - name: Apply -f front.yaml
+      kubernetes.core.k8s:
+        state: present
+        definition: "{{ lookup('file', 'kube/front.yaml') }}"
