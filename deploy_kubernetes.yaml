@@ -12,13 +12,13 @@
         state: present
         definition: "{{ lookup('file', 'kube/create-namespace.yaml') }}"
 
-    - name: Apply back.yaml
+    - name: Apply -f back.yaml
       kubernetes.core.k8s:
         state: present
         definition: "{{ lookup('file', 'kube/back.yaml') }}"
 
     
-    - name: Apply front.yaml
+    - name: Apply -f front.yaml
       kubernetes.core.k8s:
         state: present
         definition: "{{ lookup('file', 'kube/front.yaml') }}"
