@@ -8,18 +8,21 @@
   tasks:
     - name: Apply create-namespace.yaml
       kubernetes.core.k8s:
+        kubeconfig: /home/jenkins/.kube/config 
         state: present
         definition: "{{ lookup('file', 'kube/create-namespace.yaml') }}"
         validate_certs: no
 
     - name: Apply back.yaml
       kubernetes.core.k8s:
+        kubeconfig: /home/jenkins/.kube/config 
         state: present
         definition: "{{ lookup('file', 'kube/back.yaml') }}"
         validate_certs: no
     
     - name: Apply front.yaml
       kubernetes.core.k8s:
+        kubeconfig: /home/jenkins/.kube/config 
         state: present
         definition: "{{ lookup('file', 'kube/front.yaml') }}"
         validate_certs: no
