@@ -15,20 +15,10 @@
 
     - name: Apply configuration from back.yaml
       kubernetes.core.k8s:
-        state: present  # Assuming back.yaml defines configuration
+        state: present  
         definition: "{{ lookup('file', 'kube/back.yaml') }}"
 
     - name: Apply configuration from front.yaml
       kubernetes.core.k8s:
-        state: present
+        state: restarted
         definition: "{{ lookup('file', 'kube/front.yaml') }}"
-
-    - name: Restart deployment "front" (assuming front.yaml defines a deployment)
-      register: restart_result  # Register the command output
-      command: kubectl rollout restart deployment front -n app-space
-      when: restart_result is not defined or restart_result.rc == 0  # Only restart if previous task succeeded
-
-    - name: Report deployment restart status (optional)
-      debug:
-        msg: "Deployment restart for 'front' - {{ restart_result.stdout }}"
-      when: restart_result is defined
