@@ -6,19 +6,19 @@
     - kubernetes.core
   vars:
     ansible_python_interpreter: /usr/bin/python3
-
   tasks:
-    - name: Create namespace from create-namespace.yaml
+    - name: Apply create-namespace.yaml
       kubernetes.core.k8s:
         state: present
         definition: "{{ lookup('file', 'kube/create-namespace.yaml') }}"
 
-    - name: Apply configuration from back.yaml
+    - name: Apply -f back.yaml
       kubernetes.core.k8s:
-        state: present  
+        state: present
         definition: "{{ lookup('file', 'kube/back.yaml') }}"
 
-    - name: Apply configuration from front.yaml
+    
+    - name: Apply -f front.yaml
       kubernetes.core.k8s:
-        state: restarted
+        state: present
         definition: "{{ lookup('file', 'kube/front.yaml') }}"
