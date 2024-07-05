@@ -45,6 +45,17 @@ spec:
       targetPort: 5000
       nodePort: 31080
   type: NodePort
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: front-cm0
+  namespace: app-space
+  labels:
+    app: front
+data:
+  docker-compose.yml: "version: '3.5'\n\nservices:\n  front:\n    build: ./mcq-lab\n    container_name: wadii10/mcq-front:latest\n    ports:\n      - '5000:5000'\n    volumes:\n      - ./:/angular-app\n    environment:\n      - STYLE=css\n  \n  back:\n    build: ./backend\n    container_name: wadii10/mcq-back:latest\n    ports:\n      - \"3000:3000\"\n    hostname: back\n    command: npm start"
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -65,13 +76,3 @@ spec:
                 name: front
                 port:
                   number: 5000
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: front-cm0
-  namespace: app-space
-  labels:
-    app: front
-data:
-  docker-compose.yml: "version: '3.5'\n\nservices:\n  front:\n    build: ./mcq-lab\n    container_name: wadii10/mcq-front:latest\n    ports:\n      - '5000:5000'\n    volumes:\n      - ./:/angular-app\n    environment:\n      - STYLE=css\n  \n  back:\n    build: ./backend\n    container_name: wadii10/mcq-back:latest\n    ports:\n      - \"3000:3000\"\n    hostname: back\n    command: npm start"

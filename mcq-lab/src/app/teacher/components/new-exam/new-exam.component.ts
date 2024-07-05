@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { DoctorService } from '../../services/doctor.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-exam',
@@ -25,6 +26,7 @@ export class NewExamComponent implements OnInit {
   id: any;
 
   constructor(
+    private router: Router,
     private DS: DoctorService,
     private fb: FormBuilder,
     private toaster: ToastrService

@@ -74,8 +74,8 @@
           <div class="examhead text-center">
             <h2>{{subjectName}} exam</h2>
           </div>
-          <div class="quizBox" *ngFor="let item of questions; let index=index">
-            <strong><span class="text-danger">question1:</span> {{item.question}}</strong>
+          <div class="quizBox" *ngFor="let item of questions let index=index">
+            <strong><span class="text-danger">question:</span> {{item.question}}</strong>
             <div class="row" >
               <div class="col-sm-12">
                 A. {{item.answer1}}

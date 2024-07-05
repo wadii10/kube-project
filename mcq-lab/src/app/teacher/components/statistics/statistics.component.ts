@@ -11,17 +11,18 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 
 export class StatisticsComponent implements OnInit{
   subjects: any[] = [];
+  nbSubjects :any;
   nbMmembers :any;
   chartData1: ChartDataset[] = [];
   chartLabels1: string[] = [];
   chartOptions1: ChartOptions = {
     responsive: true,
+    maintainAspectRatio: false,
   };
 
   constructor(private doctorService: DoctorService ,private As: AuthService) { 
     this.nbMmembers = this.As.getUsers('students').subscribe((res:any)=>{
       this.nbMmembers=res.length});
-
   }
 
   ngOnInit(): void {
@@ -31,6 +32,7 @@ export class StatisticsComponent implements OnInit{
   getSubjects(): void {
     this.doctorService.getAllsubjects().subscribe((res: any) => {
       this.subjects = res;
+      this.nbSubjects = res.length
       this.prepareChartData();
     });
   }

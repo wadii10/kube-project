@@ -21,8 +21,6 @@ spec:
           ports:
             - name: back
               containerPort: 3000
-      #hostname: backend-service
-      #restartPolicy: Always
 ---
 apiVersion: v1
 kind: Service

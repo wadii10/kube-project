@@ -1,20 +1,30 @@
-<div class="subjectBox">
-    <div class="row">
-        <div class="namesubject">
-          <div> Number of Students: {{nbMmembers}}</div>
-        </div>
-        
-      </div>
+<div class="dashboard">
+  <!-- Sticker Section -->
+  <div class="stickers">
+    <div class="sticker">
+      <h4>Number of Students</h4>
+      <p class="student-count" >{{ nbMmembers }}</p>
     </div>
-  
+    <div class="sticker">
+      <h4>Number of Subjects</h4>
+      <p class="student-count" >{{ nbSubjects }}</p>
+    </div>
+  </div>
 
-<div class="chart-wrapper">
-  <canvas
-    baseChart
-    [type]="'pie'"
-    [datasets]="chartData1"
-    [labels]="chartLabels1"
-    [options]="chartOptions1"
-  >
-  </canvas>
+  <!-- Chart Section -->
+  <div class="chart-card">
+    <div class="chart-header">
+      <h3>Quiz Results</h3>
+    </div>
+    <div class="chart-wrapper">
+      <canvas
+        baseChart
+        [type]="'pie'"
+        [datasets]="chartData1"
+        [labels]="chartLabels1"
+        [options]="chartOptions1"
+      >
+      </canvas>
+    </div>
+  </div>
 </div>
